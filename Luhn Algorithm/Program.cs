@@ -16,7 +16,7 @@ namespace Luhn_Algorithm
         static bool ValidId(string idNumber)
         {
             //IdNumber must not be empty and must be 13 characters
-            if (!string.IsNullOrEmpty(idNumber) && idNumber.Length == 13)
+            if (!string.IsNullOrEmpty(idNumber))
             {
                 try
                 {
@@ -35,6 +35,7 @@ namespace Luhn_Algorithm
                                 Product = Product.Substring(1, 1);
                                 Product = (Convert.ToInt32(Product) + 1).ToString();
                             }
+                            //Storing numbers at even index
                             EvensArr.Add(Convert.ToInt32(Product));
                         }
                         else
@@ -49,9 +50,9 @@ namespace Luhn_Algorithm
                         return true;
                     }
                 }
-                catch (Exception e)
+                catch 
                 {
-                    throw e;
+                    return false;
                 }
             }
             return false;
